@@ -1,0 +1,40 @@
+<h2>Counter (Using Redux)</h2>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.4/redux.min.js"></script>
+
+<div>
+  Count: <span id="counter"></span>
+  <button id="increment">+</button>
+  <button id="decrement">-</button>
+</div>
+
+<script type="text/javascript">
+  var $counter = document.getElementById('counter');
+  var $increment = document.getElementById('increment');
+  var $decrement = document.getElementById('decrement');
+
+  // Action Types
+  const INCREMENT = 'INCREMENT';
+  const DECREMENT = 'DECREMENT';
+
+  let reducer = (state = 0, action) => {
+    switch(action.type) {
+      case 'INCREMENT':
+        return state + 1;
+
+      case 'DECREMENT':
+        return state - 1;
+
+      default:
+        return state;
+    }
+  };
+
+  let store = Redux.createStore(reducer);
+  $increment.onclick = () => store.dispatch({ type: 'INCREMENT' });
+  $decrement.onclick = () => store.dispatch({ type: 'DECREMENT' });
+
+  let render = () => $counter.innerHTML = store.getState();
+
+  store.subscribe(render);
+</script>

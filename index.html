@@ -1,0 +1,30 @@
+<h2>Counter (Using Vanilla JS)</h2>
+
+<div>
+  Count: <span id="counter"></span>
+  <button id="increment">+</button>
+  <button id="decrement">-</button>
+</div>
+
+<script type="text/javascript">
+  var count = 0;
+  var $counter = document.getElementById('counter');
+  var $increment = document.getElementById('increment');
+  var $decrement = document.getElementById('decrement');
+
+  $increment.onclick = function() {
+    count++;
+    render();
+  };
+
+  $decrement.onclick = function() {
+    count--;
+    render();
+  };
+
+  var render = function() {
+    $counter.innerHTML = count;
+  };
+
+  render();
+</script>
